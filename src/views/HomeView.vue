@@ -1,9 +1,9 @@
 <script>
-
+import posts from '../App.vue'
 </script>
 
 <template>
-  <main>
-    teste
-  </main>
+
+{{ posts }}
+
 </template>

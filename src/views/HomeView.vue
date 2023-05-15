@@ -4,6 +4,6 @@ import posts from '../App.vue'
 
 <template>
 
-{{ posts }}
+
 
 </template>

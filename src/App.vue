@@ -1,5 +1,6 @@
 <script>
 import { RouterLink, RouterView } from "vue-router";
+import "@/assets/base.css";
 
 export default {
   data() {
@@ -80,26 +81,39 @@ export default {
 </template>
 
 <style scoped>
-/* h3 {
-  background-color: aquamarine;
+h3 {
+  /* border: 8px solid;
+  padding: 10px;
+  border-image: repeating-linear-gradient(to bottom right, #33475b, #0033CC, #FF77CC) 20;
+  width: 30%; */
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
 h4 {
   background-color: blue;
+  text-align: right;
+  font-weight: inherit;
 }
 
 p {
   background-color: brown;
-} */
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  letter-spacing: 1px;
+}
 
 form {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  align-items: center;
+  justify-content: center;
+  width: 45%;
 }
 
 form > * {
   margin: 1rem;
+  width: 90%;
 }
 
 input#título {
@@ -107,6 +121,9 @@ input#título {
   padding: 9px;
   background-color: #20212b;
   box-shadow: inset 2px 5px 7px rgb(0, 0, 0);
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: bold;
+  color: lightgray;
 }
 
 textarea#texto {
@@ -114,19 +131,18 @@ textarea#texto {
   padding: 12px;
   background-color: #20212b;
   box-shadow: inset 2px 5px 10px rgb(0, 0, 0);
-  
+  color: lightgray;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 button {
   border-color: aqua;
   border-radius: 20px;
-  width: 20em;
-  padding: 0.9em;
-  margin-left: 25em;
-  transition: .4s ease-in-out;
+  width: 30%;
+  padding: 12px;
+  transition: 0.4s ease-in-out;
   background: linear-gradient(163deg, #00642f 0%, #780ba3 100%);
   color: rgb(0, 255, 200);
-  
   font-size: 0.9rem;
 }
 
@@ -135,5 +151,4 @@ button:hover {
   background: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
   color: rgb(0, 0, 0);
 }
-
 </style>

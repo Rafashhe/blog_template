@@ -105,15 +105,16 @@ form > * {
 input#título {
   border-radius: 7px;
   padding: 9px;
+  background-color: #20212b;
+  box-shadow: inset 2px 5px 7px rgb(0, 0, 0);
 }
 
 textarea#texto {
   border-radius: 17px;
-  padding: 9px;
-}
-
-form button{
-
+  padding: 12px;
+  background-color: #20212b;
+  box-shadow: inset 2px 5px 10px rgb(0, 0, 0);
+  
 }
 
 button {
@@ -123,9 +124,9 @@ button {
   padding: 0.9em;
   margin-left: 25em;
   transition: .4s ease-in-out;
-  background: linear-gradient(163deg, #00642f 0%, #13034b 100%);
+  background: linear-gradient(163deg, #00642f 0%, #780ba3 100%);
   color: rgb(0, 255, 200);
-  font-family: 'Century Gothic",Verdana,sans-serif';
+  
   font-size: 0.9rem;
 }
 

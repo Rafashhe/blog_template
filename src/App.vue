@@ -81,21 +81,16 @@ export default {
 </template>
 
 <style scoped>
-@font-face {
-  font-family: 'Rocher';
-  src: url(https://assets.codepen.io/9632/RocherColorGX.woff2);
-}
 
 h3 {
   text-align: center;
   width: 50%;
-  font-family: 'Rocher';
+  font-family: 'RocherColor';
   font-size: 30px;
   padding: 10px;
   word-wrap: break-word;
   border: 1px solid transparent;
   box-shadow: 0 0 0 1px transparent, 0 2px 5px rgba(255, 255, 255, 0.3) outset;
-  
 }
 
 h4 {

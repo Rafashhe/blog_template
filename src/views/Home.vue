@@ -6,6 +6,32 @@ export default {
     props: {
         posts: Array,
     },
+    
+    data () {
+      return {
+        search: "",
+      };
+    },
+
+    computed: {
+    filteredPosts() {
+      // se search estiver vazio, retorne a lista completa de posts
+      if (!this.search) return this.posts;
+
+      // lista filtrada é o nome genérico
+      // se tiver qualquer coisa em search, faz o filtro
+      const listaFiltrada = [];
+
+      for (const post of this.posts) {
+        if (post.title.includes(this.search)) {
+          listaFiltrada.push(post);
+
+          // operadores lógicos
+        }
+      }
+      return listaFiltrada;
+    },
+  },
 };
 </script>
 

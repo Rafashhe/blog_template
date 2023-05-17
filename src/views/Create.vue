@@ -1,7 +1,6 @@
 <script>
 import { RouterLink, RouterView } from "vue-router";
 
-
 export default {
   data() {
     return {
@@ -13,22 +12,37 @@ export default {
   },
   methods: {
     handleClick(event) {
+      if (!this.formData.title) {
+        alert("Preencha o título do post");
+        return;
+      }
+
       const now = new Date();
 
       const dataDaPostagem = `${now.getDate()}/${
         now.getMonth() + 1
       }/${now.getFullYear()}`;
 
-      this.posts.push({
+      //   this.posts.push({
+      //     title: this.formData.title,
+      //     content: this.formData.content,
+      //     datetime: dataDaPostagem,
+      //   });
+
+      const newPost = {
         title: this.formData.title,
         content: this.formData.content,
         datetime: dataDaPostagem,
-      });
+      };
+
+      this.$emit("create-post", newPost);
 
       this.formData = {
         title: "",
         content: "",
       };
+
+      this.$router.push("/");
     },
 
     handleInputChange(event) {

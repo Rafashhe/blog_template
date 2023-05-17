@@ -1,62 +1,32 @@
 <script>
 import { RouterLink, RouterView } from "vue-router";
 
-
 export default {
   data() {
     return {
-      posts: [
-        {
-          title: "Meu primeiro Post",
-          datetime: Date.now(),
-          content: "Dear Diary",
-        },
-        {
-          title: "Meu segundo Post",
-          datetime: Date.now(),
-          content: "Querido diário",
-        },
-      ],
-      search: "",
+      posts: [],
     };
   },
-  computed: {
-    filteredPosts() {
-      // se search estiver vazio, retorne a lista completa de posts
-      if (!this.search) return this.posts;
-
-      // lista filtrada é o nome genérico
-      // se tiver qualquer coisa em search, faz o filtro
-      const listaFiltrada = [];
-
-      for (const post of this.posts) {
-        if (post.title.includes(this.search)) {
-          listaFiltrada.push(post);
-
-          // operadores lógicos
-        }
-      }
-      return listaFiltrada;
+  methods: {
+    addPost(newPost) {
+      this.posts.push(newPost);
     },
   },
 };
 </script>
-
+<!-- a forma de passar informações: pai-> filho = props / filho -> pai = eventos -->
 <template>
+  <header>
+    <nav>
+      <RouterLink to="/">Home</RouterLink>
+      <RouterLink to="/create">Novo Post</RouterLink>
+      <RouterLink to="/detail/:id">Arquivos</RouterLink>
+      <RouterLink to="/edit/:id">Edição</RouterLink>
+    </nav>
 
-<header>
-  
-  <nav>
-    <RouterLink to="/">Home</RouterLink>
-    <RouterLink to="/create">Novo Post</RouterLink>
-    <RouterLink to="/detail/:id">Arquivos</RouterLink>
-    <RouterLink to="/edit/:id">Edição</RouterLink>
-  </nav>
-
-<RouterView />  
-
-</header>
- 
+    <RouterView :posts="posts" @create-post="addPost" />
+    <!-- quando (@) evento (nomeGenérico) = função (nomeGenérico)-->
+  </header>
 </template>
 
 <style scoped></style>

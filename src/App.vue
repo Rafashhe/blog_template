@@ -1,6 +1,7 @@
 <script>
 import { RouterLink, RouterView } from "vue-router";
 
+
 export default {
   data() {
     return {
@@ -16,101 +17,46 @@ export default {
           content: "Querido diário",
         },
       ],
-      formData: {
-        title: "",
-        content: "",
-      },
       search: "",
     };
   },
   computed: {
-filteredPosts () {
-  // se search estiver vazio, retorne a lista completa de posts
-  if (!this.search) return this.posts;
+    filteredPosts() {
+      // se search estiver vazio, retorne a lista completa de posts
+      if (!this.search) return this.posts;
 
-  // lista filtrada é o nome genérico
-  // se tiver qualquer coisa em search, faz o filtro
-const listaFiltrada = [];
+      // lista filtrada é o nome genérico
+      // se tiver qualquer coisa em search, faz o filtro
+      const listaFiltrada = [];
 
-for (const post of this.posts) {
-  if (post.title.includes(this.search)) {
-    listaFiltrada.push(post);
-    
-    // operadores lógicos
-  }
-}
-  return listaFiltrada;
+      for (const post of this.posts) {
+        if (post.title.includes(this.search)) {
+          listaFiltrada.push(post);
 
-},
-},
-
-  methods: {
-    handleClick(event) {
-      const now = new Date();
-
-      const dataDaPostagem = `${now.getDate()}/${
-        now.getMonth() + 1
-      }/${now.getFullYear()}`;
-
-      this.posts.push({
-        title: this.formData.title,
-        content: this.formData.content,
-        datetime: dataDaPostagem,
-      });
-
-      this.formData = {
-        title: "",
-        content: "",
-      };
-    },
-
-    handleInputChange(event) {
-      const { name, value } = event.target;
-      this.formData[name] = value;
+          // operadores lógicos
+        }
+      }
+      return listaFiltrada;
     },
   },
 };
 </script>
 
 <template>
+
+<header>
   
-  <input v-model="search" placeholder="Procure pelo título do post..." />
+  <nav>
+    <RouterLink to="/">Home</RouterLink>
+    <RouterLink to="/create">Novo Post</RouterLink>
+    <RouterLink to="/detail/:id">Arquivos</RouterLink>
+    <RouterLink to="/edit/:id">Edição</RouterLink>
+  </nav>
 
-  <div id="lista-posts">
-    <div class="post" v-for="post in filteredPosts" :key="post.key">
-      <h3>{{ post.title }}</h3>
-      <h4>{{ post.datetime }}</h4>
-      <p>{{ post.content }}</p>
-    </div>
-  </div>
+<RouterView />  
 
-  <form>
-    <input v-model="formData.title" placeholder="Título" />
-
-    <textarea
-      name="content"
-      :value="formData.content"
-      placeholder="Escreva seu post aqui..."
-      @keyup="handleInputChange"
-      id=""
-      cols="30"
-      rows="10"
-    ></textarea>
-
-    <button type="button" @click="handleClick">Criar</button>
-  </form>
-  <!-- {{ posts[0]. title }} -->
-
-  <RouterView />
+</header>
+ 
 </template>
 
-<style scoped>
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-form > * {
-  margin: 1rem;
-}
-</style>
+<style scoped></style>

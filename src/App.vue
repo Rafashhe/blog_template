@@ -81,27 +81,36 @@ export default {
 </template>
 
 <style scoped>
+/* .x {
+box-sizing: content-box;
+border: 5px solid;
+box-shadow: 0 0 0 1px red, 0 2px 5px rgba(255, 255, 255, 0.3) outset;
+} */
 
 h3 {
   text-align: center;
-  width: 50%;
   font-family: 'RocherColor';
   font-size: 30px;
-  padding: 10px;
   word-wrap: break-word;
-  border: 1px solid transparent;
-  box-shadow: 0 0 0 1px transparent, 0 2px 5px rgba(255, 255, 255, 0.3) outset;
+
+  padding: 10px;
+  border: 1px solid red;
+  /* box-shadow: inset 8px 8px 12px rgb(0, 0, 0); */
+  /* padding: 8px; border: 1px solid #CCC; box-shadow:8px 8px 12px #888; border-radius:6px; */
 }
 
 h4 {
   background-color: blue;
-  text-align: left;
+  text-align: right;
   font-weight: inherit;
 }
 
 p {
   background-color: brown;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 600;
+  /* color: rgb(71, 47, 14); */
+  color: rgb(234, 250, 250);
   letter-spacing: 1px;
   max-width: 60%;
 }

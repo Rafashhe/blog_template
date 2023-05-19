@@ -94,9 +94,10 @@ h3 {
   word-wrap: break-word;
 
   padding: 10px;
-  border: 1px solid red;
-  /* box-shadow: inset 8px 8px 12px rgb(0, 0, 0); */
-  /* padding: 8px; border: 1px solid #CCC; box-shadow:8px 8px 12px #888; border-radius:6px; */
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  outline-style: outset;
+  outline-color: darkgoldenrod;
 }
 
 h4 {
@@ -106,13 +107,26 @@ h4 {
 }
 
 p {
-  background-color: brown;
+  background-color: #ffffff;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-weight: 600;
   /* color: rgb(71, 47, 14); */
-  color: rgb(234, 250, 250);
+  color: rgb(24, 161, 161);
   letter-spacing: 1px;
-  max-width: 60%;
+  
+  padding: 1rem;
+  box-shadow: 0 15px 30px 0 rgba(0,0,0,0.11),
+    0 5px 15px 0 rgba(0,0,0,0.08);
+  
+  border-radius: 0.5rem;
+  
+  border-left: 0 solid #00ff99;
+  transition: border-left 300ms ease-in-out, padding-left 300ms ease-in-out;
+}
+
+p:hover {
+  padding-left: 0.5rem;
+  border-left: 0.5rem solid #00ff99;
 }
 
 form {

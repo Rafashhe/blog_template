@@ -54,8 +54,8 @@ export default {
 <template>
   <div id="lista-posts">
     <div class="x" v-for="x in posts" :key="x.key">
-      <h3>{{ x.title }}</h3>
-      <h4>{{ x.datetime }}</h4>
+      <h3 class="box title">{{ x.title }}</h3>
+      <h3 class="box dia-post">{{ x.datetime }}</h3>
       <p>{{ x.content }}</p>
     </div>
   </div>
@@ -86,13 +86,27 @@ box-sizing: content-box;
 border: 5px solid;
 box-shadow: 0 0 0 1px red, 0 2px 5px rgba(255, 255, 255, 0.3) outset;
 } */
-
-h3 {
+.title {
   text-align: center;
   font-family: 'RocherColor';
   font-size: 30px;
   word-wrap: break-word;
+}
+.dia-post {
+  background-color: blue;
+  text-align: right;
+  font-weight: inherit;
+}
+h3 {
+  display: flex;
+  margin: 0;
+}
 
+.box {
+  border: 5% solid red;
+
+}
+/* h3.title {
   padding: 10px;
   border: 1px solid transparent;
   border-radius: 0.5rem;
@@ -100,12 +114,14 @@ h3 {
   outline-color: darkgoldenrod;
 }
 
-h4 {
-  background-color: blue;
-  text-align: right;
-  font-weight: inherit;
-}
-
+h3.datetime {
+  padding: 10px;
+  border-top: none;
+  border-bottom: 1px solid transparent;
+  border-radius: 0.5rem;
+  outline-style: outset;
+  outline-color: darkgoldenrod;
+} */
 p {
   background-color: #ffffff;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;

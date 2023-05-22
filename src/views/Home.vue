@@ -1,6 +1,7 @@
 <script>
 import { RouterLink } from "vue-router";
 
+// componentes dependem de uma informação do pai (app). O props "posts" está sendo definido no pai (app), aqui seria uma "cópia"
 export default {
   props: {
     posts: Array,
@@ -10,6 +11,8 @@ export default {
     return {
       search: "",
       showModal: false,
+      selectedPost: null,
+      // diferença entre nulo e indefinido, nulo alguém já determinou, indefinido não existe.
     };
   },
 
@@ -33,6 +36,7 @@ export default {
     },
   },
   methods: {
+    // serve para manipular o data através de variáves
     getPostId(title) {
       // passa pela lista de posts (não filtrada)
       for (const index in this.posts) {
@@ -44,11 +48,19 @@ export default {
       }
     },
     deletePost() {
-      this.posts.splice(this.posts.indexOf(this.posts), 1);
-      this.toggle();
+      const id = this.getPostId(this.selectedPost.title);
+      this.$emit("delete-post", id);
+      this.setupModal(); // sem id porque eu só quero a função de abrir e fechar o modal
     },
-    toggle() {
+    setupModal(id) {
       this.showModal = !this.showModal;
+
+      if (id) {
+        this.selectedPost = this.posts[id];
+        return;
+        // return neste caso, encerra a função
+      }
+      this.selectedPost = null;
     },
   },
 };
@@ -60,11 +72,16 @@ export default {
   <div id="lista-posts">
     <div class="post" v-for="post in filteredPosts" :key="post.key">
       <h3>
+        <!-- interface declarativa, sempre vem do data ou de um método. Métodos são funções -->
         {{ post.title }}
         <RouterLink :to="`/edit/${getPostId(post.title)}`">
           <span class="material-symbols-outlined">edit</span>
         </RouterLink>
-        <span class="material-symbols-outlined" @click="toggle">close</span>
+        <span
+          class="material-symbols-outlined"
+          @click="setupModal(getPostId(post.title))"
+          >delete</span
+        >
       </h3>
       <h4>{{ post.datetime }}</h4>
       <p>{{ post.content }}</p>
@@ -74,12 +91,12 @@ export default {
   <div class="modal" v-show="showModal">
     <div class="modal-content">
       <h3>Deletar Post</h3>
-      <p>Tem certeza que deseja deletar o 'Titulo do post'?</p>
+      <p>Tem certeza que deseja deletar o '{{ selectedPost?.title }}'?</p>
       <p>Esta ação é irreversivel</p>
 
       <div class="modal-actions">
         <button class="bg-sucess" @click="deletePost">Confirmar</button>
-        <button class="bg-error" @click="toggle">Cancelar</button>
+        <button class="bg-error" @click="setupModal">Cancelar</button>
       </div>
     </div>
   </div>

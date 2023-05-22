@@ -23,7 +23,10 @@ export default {
       this.posts.push(newPost);
     },
     updatePost(updatedPost, id) {
-      this.posts [id] = updatedPost;
+      this.posts[id] = updatedPost;
+    },
+    removePost(id) {
+      this.posts.splice(id, 1);
     },
   },
 };
@@ -36,7 +39,7 @@ export default {
       <RouterLink to="/create">Novo Post</RouterLink>
     </nav>
 
-    <RouterView :posts="posts" @create-post="addPost" @edit-post="updatePost" />
+    <RouterView :posts="posts" @create-post="addPost" @edit-post="updatePost" @delete-post="removePost"/>
     <!-- quando (@) evento (nomeGenérico) for emitido = ele recebe (=) a função (nomeGenérico)-->
   </header>
 </template>

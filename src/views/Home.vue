@@ -71,9 +71,13 @@ export default {
 
   <div id="lista-posts">
     <div class="post" v-for="post in filteredPosts" :key="post.key">
-      <h3>
-        <!-- interface declarativa, sempre vem do data ou de um método. Métodos são funções -->
-        {{ post.title }}
+      <div class="flex">
+        <RouterLink :to="`/detail/${getPostId(post.title)}`">
+          <h3>
+            <!-- interface declarativa, sempre vem do data ou de um método. Métodos são funções -->
+            {{ post.title }}
+          </h3>
+        </RouterLink>
         <RouterLink :to="`/edit/${getPostId(post.title)}`">
           <span class="material-symbols-outlined">edit</span>
         </RouterLink>
@@ -82,7 +86,7 @@ export default {
           @click="setupModal(getPostId(post.title))"
           >delete</span
         >
-      </h3>
+      </div>
       <h4>{{ post.datetime }}</h4>
       <p>{{ post.content }}</p>
     </div>
@@ -101,3 +105,14 @@ export default {
     </div>
   </div>
 </template>
+
+<style scoped>
+
+textarea {
+    resize: none;
+    outline: none;
+    border: none;
+    width: 80%;
+}
+
+</style>

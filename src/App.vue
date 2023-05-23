@@ -54,8 +54,10 @@ export default {
 <template>
   <div id="lista-posts">
     <div class="x" v-for="x in posts" :key="x.key">
-      <h3 class="box title">{{ x.title }}</h3>
-      <h3 class="box dia-post">{{ x.datetime }}</h3>
+      <div class="box">
+        <h3 class="title">{{ x.title }}</h3>
+        <h2 class="dia-post">{{ x.datetime }}</h2>
+      </div>
       <p>{{ x.content }}</p>
     </div>
   </div>
@@ -81,68 +83,67 @@ export default {
 </template>
 
 <style scoped>
-/* .x {
-box-sizing: content-box;
-border: 5px solid;
-box-shadow: 0 0 0 1px red, 0 2px 5px rgba(255, 255, 255, 0.3) outset;
-} */
-.title {
-  text-align: center;
-  font-family: 'RocherColor';
-  font-size: 30px;
+.x {
+  display: grid;
   word-wrap: break-word;
-}
-.dia-post {
-  background-color: blue;
-  text-align: right;
-  font-weight: inherit;
-}
-h3 {
-  display: flex;
-  margin: 0;
+  place-items: center;
 }
 
 .box {
-  border: 5% solid red;
+  min-width: 50%;
+  max-width: 95%;
+  margin-bottom: 10px;
 
-}
-/* h3.title {
-  padding: 10px;
-  border: 1px solid transparent;
-  border-radius: 0.5rem;
+  background-color: rgba(216, 221, 216, 0.541);
+  cursor: pointer;
+
+  border-radius: 0.3rem;
+  outline: 0.3rem;
   outline-style: outset;
   outline-color: darkgoldenrod;
 }
 
-h3.datetime {
-  padding: 10px;
-  border-top: none;
-  border-bottom: 1px solid transparent;
-  border-radius: 0.5rem;
-  outline-style: outset;
+.box:hover {
+  background-color: rgba(216, 221, 220, 0.877);
+  border-radius: 0.7rem;
+  box-shadow: inset 2px 5px 7px rgb(68, 66, 43);
   outline-color: darkgoldenrod;
-} */
+}
+
+.title {
+  text-align: center;
+  font-family: "RocherColor";
+  font-size: 30px;
+  word-wrap: break-word;
+
+  padding-top: 0.7em;
+  padding-inline: 0.7em;
+}
+.dia-post {
+  text-align: right;
+  font-weight: 600;
+  font-size: medium;
+  padding-top: 0.3em;
+  padding-inline: 0.5em;
+}
+
 p {
-  background-color: #ffffff;
+  margin-top: 0;
+  margin-bottom: 10px;
+  padding: 1rem;
+
+  min-width: 48%;
+  max-width: 95%;
+
+  background: linear-gradient(#fff, #fff) padding-box,
+              linear-gradient(157deg, #00ff75, #3700ff) border-box;
+  border: 5px solid transparent;
+  border-radius: 0.5rem;
+
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-weight: 600;
-  /* color: rgb(71, 47, 14); */
   color: rgb(24, 161, 161);
   letter-spacing: 1px;
-  
-  padding: 1rem;
-  box-shadow: 0 15px 30px 0 rgba(0,0,0,0.11),
-    0 5px 15px 0 rgba(0,0,0,0.08);
-  
-  border-radius: 0.5rem;
-  
-  border-left: 0 solid #00ff99;
-  transition: border-left 300ms ease-in-out, padding-left 300ms ease-in-out;
-}
-
-p:hover {
-  padding-left: 0.5rem;
-  border-left: 0.5rem solid #00ff99;
 }
 
 form {

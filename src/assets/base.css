@@ -1,13 +1,19 @@
+@import url(modal.css);
+@import url(form.css);
+
+@font-face {
+  font-family: "RocherColor";
+  src: url(../assets/fonts/invertRocherColorGX-8913274d.ttf);
+}
+
 * {
   margin: 0;
   box-sizing: content-box;
-  
-
 }
 
 #app {
-  padding: 4rem;
   height: 100vh;
+  width: 100vw;
 
   background: radial-gradient(
         rgba(255, 255, 255, 0) 0,
@@ -50,26 +56,30 @@
         rgba(255, 255, 255, 0) 14%
       )
       0 0,
-    linear-gradient(
-      45deg,
-      #343702 0%,
-      #184500 20%,
-      #187546 30%,
-      #006782 40%,
-      #0b1284 50%,
-      #760ea1 60%,
-      #83096e 70%,
-      #840b2a 80%,
-      #b13e12 90%,
-      #e27412 100%
-    );
-  background-size: 470px 470px, 970px 970px, 410px 410px, 610px 610px,
+linear-gradient(
+  164deg,
+  #3EECAC 0%,
+  #EE74E1 100%
+  );
+  
+background-size: 470px 470px, 970px 970px, 410px 410px, 610px 610px,
     530px 530px, 730px 730px, 100% 100%;
-
 }
 
-@font-face {
-  font-family: "RocherColor";
-  src: url(../assets/fonts/invertRocherColorGX-8913274d.ttf);
+span {
+  cursor: pointer;
 }
 
+a:any-link {
+text-decoration: none;
+color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
